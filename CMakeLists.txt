@@ -3,4 +3,7 @@ project(tiw)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(tiw main.cpp)
+add_executable(tiw main.cpp
+        utils/commands.cpp
+        utils/commands.h
+)
