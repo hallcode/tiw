@@ -6,18 +6,27 @@
 #define TIW_COMMANDS_H
 
 #include <string>
-#include <map>
+#include <vector>
 
-using commandFunction = void (*)(std::string);
+using namespace std;
+
+using commandFunction = void (*)(string);
 
 class Commands {
 public:
     Commands();
-    void call(std::string);
+
+    struct Command {
+        string keyword;
+        commandFunction function;
+    };
+
+    void call(string);
 
 private:
-    std::map<std::string, commandFunction> keywords;
-    static void test_command(std::string);
+    vector<Command> commands;
+
+    static void test_command(string);
 };
 
 #endif //TIW_COMMANDS_H

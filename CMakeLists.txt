@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 23)
 add_executable(tiw main.cpp
         utils/commands.cpp
         utils/commands.h
+        utils/ScriptParser.cpp
+        utils/ScriptParser.h
 )

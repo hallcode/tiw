@@ -6,34 +6,41 @@
 #include <string>
 #include "commands.h"
 
-// Constructor
+using namespace std;
+
+// Add commands to vector
 Commands::Commands() {
-    // Add an entry to the keywords map for every command function
-    this->keywords["TEST"] = &Commands::test_command;
+    this->commands.push_back({"TEST", Commands::test_command});
 }
 
+
 // Get first word and call correct function
-void Commands::call(std::string command) {
+void Commands::call(const string command) {
     if (command.empty()) {
         return;
     }
 
-    u_long splitPosition = command.find_first_of(' ');
+    for (int i = 0; i < this->commands.size(); i++) {
+        if (!command.starts_with(this->commands[i].keyword)) {
+            continue;
+        }
 
-    if (splitPosition == std::string::npos) {
-        this->keywords[command]("");
+        unsigned int keywordLength = this->commands[i].keyword.length();
+        string arguments = command.substr(keywordLength+1);
+
+        this->commands[i].function(arguments);
         return;
     }
 
-    std::string keyword = command.substr(0, splitPosition);
-    this->keywords[keyword](command.substr(splitPosition+1, std::string::npos));
+    cout << "Command \"" << command << "\" not recognised." << endl;
 }
 
 // Commands
-void Commands::test_command(std::string arguments) {
+void Commands::test_command(const string args) {
+
     // Does nothing
-    std::cout << "Test has worked" << std::endl;
-    if (!arguments.empty()) {
-        std::cout << "You said: " << arguments << std::endl;
+    cout << "Test has worked" << endl;
+    if (!args.empty()) {
+        cout << "Arguments: " << args << endl;
     }
 }
