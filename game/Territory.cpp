@@ -3,3 +3,11 @@
 //
 
 #include "Territory.h"
+
+Territory &TerritoryCollection::get(const Territory::idstring id) {
+    for (auto &territory: this->territories) {
+        if (territory.code == id) {
+            return territory;
+        }
+    }
+}

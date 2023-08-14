@@ -1,0 +1,13 @@
+title: Classic Variant
+
+factions:
+  - name: England
+    color: red;
+
+territories:
+  - name: North Atlantic
+    code: nat
+    domain: sea
+    neighbors:
+      - nrg
+      - eng

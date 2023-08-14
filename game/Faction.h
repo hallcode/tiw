@@ -10,9 +10,9 @@
 using namespace std;
 
 class Faction {
-    int id;
+    unsigned int id;
     string name;
-    int colour[3];      // RGB colour value
+    unsigned int colour[3];      // RGB colour value
 };
 
 

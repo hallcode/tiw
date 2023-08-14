@@ -12,4 +12,6 @@ add_executable(tiw main.cpp
         game/Faction.h
         game/Territory.cpp
         game/Territory.h
+        game/Order.cpp
+        game/Order.h
 )

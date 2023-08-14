@@ -11,16 +11,32 @@
 using namespace std;
 
 class Territory {
+public:
+    typedef char idstring[4];
+
     enum Domain {
-        LAND, SEA, COAST, MULTI
+        LAND, SEA
     };
-    int id;
-    char code[4];
+    idstring code;
     string name;
-    Domain type;
+    Domain type[2];
     bool isResourceCentre;
-    Territory *parent;
-    vector<Territory *> neighbours;
+    idstring parent;
+    vector<idstring> neighbours;
+
+    unsigned int holdStrength;
+    unsigned int attackStrength;
+};
+
+
+class TerritoryCollection {
+public:
+    Territory &get(const Territory::idstring);
+
+    void add(Territory);
+
+private:
+    vector<Territory> territories;
 };
 
 
